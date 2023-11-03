@@ -11,6 +11,51 @@
    - Outputs: Define values to be exposed after resource creation for reference.
    - Modules: Encapsulate reusable configurations and resources.
 
+Explain the core components of Terraform's architecture.
+
+Answer: Terraform's architecture includes the following core components:
+
+Terraform CLI: The command-line tool for interacting with Terraform.
+Terraform Configuration: HCL (HashiCorp Configuration Language) files that define the desired state of your infrastructure.
+Providers: Plugins that communicate with various infrastructure platforms (e.g., AWS, Azure, Google Cloud) to create, modify, and destroy resources.
+Terraform Core: The central component responsible for parsing configuration, building the dependency graph, and executing resource operations.
+Terraform State: A JSON file that stores the current state of managed resources.
+Backends: Storage solutions for remote state files, which can include features like state locking and versioning.
+What is the role of Terraform Configuration in the architecture, and how does it define infrastructure?
+
+Answer: Terraform Configuration, written in HCL, defines the desired state of your infrastructure. It specifies the resources, their configurations, dependencies, and any variables required to create and manage the infrastructure. Terraform Configuration files serve as the blueprint for what Terraform should create and maintain.
+
+How does Terraform manage resources across different infrastructure platforms (e.g., AWS, Azure)?
+
+Answer: Terraform utilizes provider plugins to manage resources across different infrastructure platforms. Each provider is responsible for translating the Terraform configuration into actions specific to that platform, such as making API calls to create, modify, or delete resources. Terraform communicates with these providers through a standardized plugin interface.
+
+Explain the role of Terraform State in the architecture. Why is it important?
+
+Answer: Terraform State is a JSON file that stores the current state of the managed resources. It is a critical component in Terraform's architecture as it:
+
+Records the mapping between the Terraform resources and the real-world infrastructure.
+Helps Terraform identify what resources need to be created, modified, or destroyed to match the desired state.
+Allows for tracking resource attributes, dependencies, and information needed for resource management.
+What is the purpose of Terraform Backends in the architecture, and how do they enhance collaboration and state management?
+
+Answer: Terraform Backends are storage solutions for remote state files. They enhance collaboration and state management by:
+
+Enabling secure, centralized storage of state files accessible to multiple users or processes.
+Providing features like state locking to prevent conflicts during concurrent operations.
+Supporting versioning, which helps track changes and recover from errors.
+Facilitating collaboration and sharing of infrastructure configurations across teams.
+How does Terraform ensure resource dependencies and proper resource order in the architecture?
+
+Answer: Terraform manages resource dependencies by building a dependency graph based on the relationships defined in the Terraform configuration. It ensures the correct order for creating resources by analyzing this graph. Resources with no dependencies are created first, followed by resources that depend on others, thereby ensuring proper resource order and preventing issues.
+
+What is the role of Terraform Core in the architecture, and how does it orchestrate resource management?
+
+Answer: Terraform Core is responsible for several key tasks in the architecture:
+Parsing Terraform Configuration files.
+Building the dependency graph based on resource dependencies.
+Executing resource operations (create, update, delete) based on the desired state and resource changes.
+Managing the interaction between Terraform CLI, Providers, and Terraform State.
+
  **What is the Terraform State file, and why is it important?**
 
    *Answer*: The Terraform State file is a crucial part of Terraform's functionality. It stores the current state of the infrastructure being managed, including resource IDs, attributes, and dependencies. It helps Terraform to track changes, plan updates, and ensure that the infrastructure matches the desired state. The state file is important for collaboration and preventing conflicts in a multi-user environment.
